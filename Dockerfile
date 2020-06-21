@@ -17,7 +17,6 @@ LABEL maintainer="hans_meine@gmx.net"
 RUN apk add --no-cache tini python
 
 ARG BUILD_VCS_REV
-ARG BUILD_TIMESTAMP
 
 LABEL org.opencontainers.image.title="NoVNC"
 LABEL org.opencontainers.image.description="Size-optimized NoVNC image (web-based VNC client)"
@@ -27,7 +26,10 @@ LABEL org.opencontainers.image.source="https://github.com/novnc/noVNC"
 LABEL org.opencontainers.image.licenses="MPL-2.0"
 LABEL org.opencontainers.image.revision=$BUILD_VCS_REV
 
-LABEL org.opencontainers.image.created=$BUILD_TIMESTAMP
+# don't know how to implement with Docker Hub; also, build time is not crucial
+# and still visible through docker history:
+#ARG BUILD_TIMESTAMP
+#LABEL org.opencontainers.image.created=$BUILD_TIMESTAMP
 
 ENV REMOTE_HOST=localhost
 ENV REMOTE_PORT=5900
