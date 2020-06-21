@@ -1,7 +1,7 @@
 FROM mhart/alpine-node:10
 LABEL maintainer="hans_meine@gmx.net"
 
-RUN apk --update add git tini
+RUN apk --update add git
 
 RUN git clone https://github.com/novnc/noVNC.git /app \
  && git clone https://github.com/novnc/websockify /app/utils/websockify \
