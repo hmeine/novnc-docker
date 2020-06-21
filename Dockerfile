@@ -4,8 +4,12 @@ LABEL maintainer="hans_meine@gmx.net"
 RUN apk --update add git
 
 RUN git clone https://github.com/novnc/noVNC.git /app \
- && git clone https://github.com/novnc/websockify /app/utils/websockify \
- && rm -rf /app/.git /app/utils/websockify/.git
+ && git clone https://github.com/novnc/websockify /app/utils/websockify
+
+ARG BUILD_VCS_REV
+RUN cd /app && git checkout ${BUILD_VCS_REV}
+
+RUN rm -rf /app/.git /app/utils/websockify/.git
 RUN cd /app && npm install 
 RUN cd /app && ./utils/use_require.js --as commonjs --with-app
 
