@@ -1,0 +1,3 @@
+#!/bin/bash
+docker tag $IMAGE_NAME $DOCKER_REPO:$BUILD_VCS_REV
+docker push $DOCKER_REPO:$BUILD_VCS_REV
